@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '1.2.1'
+}
+
+group 'us.abbies.b'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+mainClassName = 'us.abbies.b.jfck.Compiler'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.ow2.asm:asm:5.0.4'
+    compile 'org.ow2.asm:asm-commons:5.0.4'
+}
+
+shadowJar {
+    relocate 'org.objectweb.asm', 'us.abbies.b.jfck.asm'
+}
